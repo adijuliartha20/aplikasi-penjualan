@@ -1,0 +1,28 @@
+[debug] [2022-09-02T03:02:37.652Z] ----------------------------------------------------------------------
+[debug] [2022-09-02T03:02:37.654Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\adiju\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js list
+[debug] [2022-09-02T03:02:37.654Z] CLI Version:   7.16.1
+[debug] [2022-09-02T03:02:37.654Z] Platform:      win32
+[debug] [2022-09-02T03:02:37.654Z] Node Version:  v14.0.0
+[debug] [2022-09-02T03:02:37.655Z] Time:          Fri Sep 02 2022 11:02:37 GMT+0800 (Singapore Standard Time)
+[debug] [2022-09-02T03:02:37.656Z] ----------------------------------------------------------------------
+[debug] [2022-09-02T03:02:37.656Z] 
+[debug] [2022-09-02T03:02:37.720Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-02T03:02:37.721Z] > authorizing via signed-in user
+[warn] This command is deprecated. Instead, use 'firebase projects:list' command to list your projects.
+[debug] [2022-09-02T03:02:37.724Z] [WARNING] Error: getProjects() is deprecated - update the implementation
+    at Object.getProjects (C:\Users\adiju\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:198:35)
+    at Command.actionFn (C:\Users\adiju\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\list.js:14:16)
+    at Command.<anonymous> (C:\Users\adiju\AppData\Roaming\npm\node_modules\firebase-tools\lib\command.js:158:25)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\adiju\AppData\Roaming\npm\node_modules\firebase-tools\lib\command.js:5:58)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[debug] [2022-09-02T03:02:37.726Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-09-02T03:02:37.726Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-09-02T03:02:38.049Z] <<< HTTP RESPONSE 200
+[debug] [2022-09-02T03:02:38.211Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+ 
+[debug] [2022-09-02T03:02:59.679Z] Error: connect ETIMEDOUT 104.197.85.31:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1142:16)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 104.197.85.31:443
