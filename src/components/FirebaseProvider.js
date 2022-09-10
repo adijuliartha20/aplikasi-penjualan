@@ -14,7 +14,7 @@ import 'firebase/storage';
 import firebaseConfig from '../config/firebase';
 
 //12. gunakan fitur React Firebase Hook
-import {useAuthState} from 'react-firebase-hooks/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 //11. inisialisasi firebase
@@ -24,23 +24,23 @@ firebase.initializeApp(firebaseConfig);
 const FirebaseContext = React.createContext();
 
 //19. Buat custom hook di FirebaseProvider.js
-export function useFirebase(){
+export function useFirebase() {
     return useContext(FirebaseContext);
 }
 
 //2.buat komponen pembungkus
-function FirebaseProvider(props){
-   //13. inisialisasi fitur auth firestore dan storage
-   const auth = firebase.auth();
-   const firestore = firebase.firestore();
-   const storage = firebase.storage();
-   //14. gunakan useAuthState. memiliki kita return value [user, loading, error]
-   const [user, loading, error] = useAuthState(auth) ;
-   //15. masukkan data ke share data context di value={{}}
+function FirebaseProvider(props) {
+    //13. inisialisasi fitur auth firestore dan storage
+    const auth = firebase.auth();
+    const firestore = firebase.firestore();
+    const storage = firebase.storage();
+    //14. gunakan useAuthState. memiliki kita return value [user, loading, error]
+    const [user, loading, error] = useAuthState(auth);
+    //15. masukkan data ke share data context di value={{}}
 
     //4. kita gunakan FirebaseContext.Provider dan menggunakan props.children
     //5. set data yang akan kita share secara global set value={{}} di element FirebaseContext.Provider
-    <FirebaseContext.Provider value={{auth, firebase, storage, user, loading, error}}>
+    return <FirebaseContext.Provider value={{ auth, firebase, storage, user, loading, error }}>
         {props.children}
     </FirebaseContext.Provider>
 }
