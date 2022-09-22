@@ -40,7 +40,7 @@ function FirebaseProvider(props) {
 
     //4. kita gunakan FirebaseContext.Provider dan menggunakan props.children
     //5. set data yang akan kita share secara global set value={{}} di element FirebaseContext.Provider
-    return <FirebaseContext.Provider value={{ auth, firebase, storage, user, loading, error }}>
+    return <FirebaseContext.Provider value={{ auth, firebase, firestore, storage, user, loading, error }}>
         {props.children}
     </FirebaseContext.Provider>
 }
