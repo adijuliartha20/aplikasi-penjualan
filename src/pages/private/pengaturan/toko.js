@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -10,12 +10,29 @@ import isURL from 'validator/lib/isURL';
 
 import { useFirebase } from '../../../components/FirebaseProvider';
 
+import {useSnackbar} from 'notistack';
+
+import AppPageLoading from '../../../components/AppPageLoading';
+
+
+//load data dari firebase
+import {useDocument} from 'react-firebase-hooks/firestore';
+
+//react router => mencegah pindah halaman padahal ada perubahan
+
+import {Prompt} from 'react-router-dom';
+
+
 function Toko(){
 	const classes = useStyles();
 	
 	const {firestore, user} = 	useFirebase();
 	
 	const tokoDoc =  firestore.doc(`toko/${user.uid}`);//disini set collection dan referencenya pakai user id
+	const {enqueueSnackbar} = useSnackbar();
+	
+	//ambil data
+	const [snapshot, loading] = useDocument(tokoDoc);
 	
 	const [form, setForm] = useState({
 		nama: '',
@@ -23,11 +40,21 @@ function Toko(){
 		telepon : '',
 		website:''
 	})
+	
+	const [isSomethingChange, setSomethingChange] = useState(false);
+	
 	const handleChange = e => {
 		setForm({
 			...form,
 			[e.target.name] : e.target.value
 		})
+		
+		setError({
+			[e.target.name] : ''		
+		});
+		
+		setSomethingChange(true);
+		
 	}
 	const [isSubmitting, setSubmitting] = useState(false)
 	
@@ -37,6 +64,14 @@ function Toko(){
 		telepon:'',
 		website:''
 	})
+	
+	//load data
+	useEffect(()=>{
+		if(snapshot){
+			setForm(snapshot.data());
+		}
+	},[snapshot]);
+	
 	
 	//buat validasi
 	const validate = () =>{
@@ -72,15 +107,24 @@ function Toko(){
 		if(Object.values(findErrors).some(err=> err != '')){
 			setError(findErrors);
 		}else{
+			console.log('masuk ini');
 			setSubmitting(true);
 			try{
-				//await tokoDoc.set(form,{merge:true});
+				await tokoDoc.set(form,{merge:true});
+				setSomethingChange(false);
+				enqueueSnackbar('Data toko berhasil disimpan', {variant:'success'});
 			}
 			catch(e){
-				console.log(e.message);
+				enqueueSnackbar(e.message, {variant:'error'});
 			}
 			setSubmitting(false);
+			
+			
 		}
+	}
+	
+	if(loading){
+		return <AppPageLoading />
 	}
 	
 	return <div className={classes.pengaturanToko}>
@@ -143,12 +187,17 @@ function Toko(){
 				className={classes.actionButton}
 				variant="contained"
 				color="primary"
-				disabled={isSubmitting}
+				disabled={isSubmitting || !isSomethingChange}
 				type="submit"
 			>
 				Simpan
 			</Button>
 		</form>
+		
+		<Prompt 
+			when={isSomethingChange}
+			message="Terdapat perubahan yang belum disimpan, apalah anda yakin  ingin meninggalkan halaman ini?"
+		/>
 	</div>
 }
 
