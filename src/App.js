@@ -20,7 +20,6 @@ import theme from './config/theme';
 import {SnackbarProvider} from 'notistack';
 
 function App() {
-  console.log('oii')
   //ingat tambahkan exact di root path
   return (
     <>
