@@ -114,7 +114,7 @@ function Login(props){
 		}
 	}
 	
-	console.log(user);
+	//console.log(user);
 	
 	if(loading){
 		return <AppLoading />

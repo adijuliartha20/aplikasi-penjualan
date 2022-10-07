@@ -8,7 +8,7 @@ import { useFirebase } from './FirebaseProvider';
 function PrivateRoute({ component: Component, ...restProps }) {
     //const user = {name:'adi'};//buat dummy dulu nanti kita integrasi dengan firebase
     const { user } = useFirebase();
-    console.log(user)
+    //console.log(user)
     return <Route
         {...restProps}
 
