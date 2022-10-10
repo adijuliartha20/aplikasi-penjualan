@@ -36,7 +36,6 @@ function Home(){
 
     //const { auth, firestore, user } = useFirebase();
 	const { firestore, user } = useFirebase();
-	const { firestore, user } = useFirebase();
 	
 	const produkCol =  firestore.collection(`toko/${user.uid}/produk`);
 	
