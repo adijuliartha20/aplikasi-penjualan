@@ -3,7 +3,7 @@ import React from 'react';
 //component material ui
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
-import TypoGraphy from '@material-ui/core/TypoGraphy';
+import TypoGraphy from '@material-ui/core/Typography';
 
 //import react router dom
 import {Link} from 'react-router-dom';
