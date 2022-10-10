@@ -34,7 +34,9 @@ import format from 'date-fns/format';
 function Home(){	
 	const classes = useStyles();
 
-    const { auth, firestore, user } = useFirebase();
+    //const { auth, firestore, user } = useFirebase();
+	const { firestore, user } = useFirebase();
+	const { firestore, user } = useFirebase();
 	
 	const produkCol =  firestore.collection(`toko/${user.uid}/produk`);
 	
@@ -295,7 +297,7 @@ function Home(){
 								{
 									produkItems.map((produkDoc)=>{
 										const produkData = produkDoc.data();
-										return 	<ListItem key={produkDoc.id} button disabled={produkData.stok==0? true:false || isSubmitting} onClick={addItem(produkDoc)}>
+										return 	<ListItem key={produkDoc.id} button disabled={produkData.stok===0? true:false || isSubmitting} onClick={addItem(produkDoc)}>
 														{produkData.foto?
 															<ListItemAvatar>
 																<Avatar src={produkData.foto} alt={produkData.nama} />

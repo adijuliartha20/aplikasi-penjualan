@@ -104,7 +104,7 @@ function Toko(){
 		
 		const findErrors = validate();
 		
-		if(Object.values(findErrors).some(err=> err != '')){
+		if(Object.values(findErrors).some(err=> err !== '')){
 			setError(findErrors);
 		}else{
 			console.log('masuk ini');

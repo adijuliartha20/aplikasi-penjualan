@@ -126,14 +126,15 @@ function EditProduk({match}){
 		}else{
 			const reader = new FileReader();
 			
-			reader.onabort = () => {// saat proses load dibatalkan
+			// saat proses load dibatalkan
+			reader.onabort = () => {
 				setError(e=>({
 					...error,
 					foto: `Proses pembacaan file dibatalkan`
 				}));
 			}
-			
-			reader. onerror = () => {//saat proses terjadi error
+			//saat proses terjadi error
+			reader.onerror = () => {
 				setError(e=>({
 					...error,
 					foto: `File tidak bisa dibaca`
