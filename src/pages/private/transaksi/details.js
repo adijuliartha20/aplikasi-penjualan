@@ -39,7 +39,7 @@ function DetailsDialog({open, handleClose,transaksi}){
 												<TableCell>{item.nama}</TableCell>
 												<TableCell>{item.jumlah}</TableCell>
 												<TableCell>{currency(item.harga)}</TableCell>
-												<TableCell>{currency(item.subtotal)}</TableCell>
+												<TableCell>{currency(item.subTotal)}</TableCell>
 											</TableRow>
 										)										
 									})								
